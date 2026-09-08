@@ -29,7 +29,7 @@
   pressurized line or settling a real delivery itself (that is
   `pipeline.operation`'s `:batch/dispatch`/`:delivery/settle`, always
   human-gated -- see README `Actuation`)."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- unsigned-certificate
   "Every certificate this actor produces is UNSIGNED -- signature is
@@ -89,7 +89,7 @@
     (throw (ex-info "batch-dispatch: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "batch-dispatch: sequence must be >= 0" {})))
-  (let [dispatch-number (str (str/upper-case jurisdiction) "-DISPATCH-" (zero-pad sequence 6))
+  (let [dispatch-number (str (str/upper jurisdiction) "-DISPATCH-" (zero-pad sequence 6))
         record {"record_id" dispatch-number
                 "kind" "batch-dispatch-draft"
                 "pipeline_batch_id" pipeline-batch-id
@@ -114,7 +114,7 @@
     (throw (ex-info "batch-delivery: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "batch-delivery: sequence must be >= 0" {})))
-  (let [delivery-number (str (str/upper-case jurisdiction) "-DELIVERY-" (zero-pad sequence 6))
+  (let [delivery-number (str (str/upper jurisdiction) "-DELIVERY-" (zero-pad sequence 6))
         record {"record_id" delivery-number
                 "kind" "batch-delivery-draft"
                 "pipeline_batch_id" pipeline-batch-id
