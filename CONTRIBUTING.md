@@ -10,8 +10,8 @@ contracts. There is no separate `kotoba-lang/pipeline` capability library --
 the domain logic lives here.
 
 ```bash
-clojure -M:dev:test
-clojure -M:lint
+kbb -M:dev:test
+kbb -M:lint
 ```
 
 ## Rules

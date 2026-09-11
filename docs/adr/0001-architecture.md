@@ -188,7 +188,7 @@ hiccup can never auto-dispatch a batch or auto-deliver.
 - `MemStore` || `DatomicStore` parity is proven by
   `test/pipeline/store_contract_test.cljk`.
 - 37 tests / 193 assertions pass; lint is clean; the demo
-  (`clojure -M:dev:run`) walks one clean dispatch + delivery lifecycle, plus
+  (`kbb -M:dev:run`) walks one clean dispatch + delivery lifecycle, plus
   eight HARD-hold scenarios (no spec-basis, line pressure, POD chain,
   contamination flag, integrity assessment, bonding/grounding, double
   dispatch, double delivery), end-to-end.

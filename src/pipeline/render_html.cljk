@@ -35,7 +35,7 @@
   Deterministic: no timestamps, no random, no wall-clock in page
   content. Two runs against the same seed are byte-identical.
 
-  Usage: `clojure -M:dev:render-html [out-file]`
+  Usage: `kbb -M:dev:render-html [out-file]`
   (default `docs/samples/operator-console.html`)."
   (:require [jp-go-dds.skin]
             [kotoba.lang.text :as str]
@@ -515,7 +515,7 @@
      (esc (count groups)) " distinct rules</span>\n"
      "</p>\n"
      "<p class=\"muted\">Generated at build time by <code>pipeline.render-html</code> "
-     "(<code>clojure -M:dev:render-html</code>) from a real run of this repo's own actor stack "
+     "(<code>kbb -M:dev:render-html</code>) from a real run of this repo's own actor stack "
      "&mdash; <code>pipeline.operation</code> on a langgraph-clj StateGraph, censored by "
      "<code>pipeline.governor</code>, gated by <code>pipeline.phase</code>, persisted to "
      "<code>pipeline.store</code>. Human approvals are real <code>interrupt-before</code> "

@@ -86,7 +86,7 @@ spec-basis, a dispatch started with incomplete evidence or outside the line-
 pressure window, a contamination flag suppressed to force a dispatch through,
 or a delivery posted without a human sign-off.
 
-## Feel the Decision Gate: `clojure -M:dev:run`
+## Feel the Decision Gate: `kbb -M:dev:run`
 
 This vertical has no companion playable prototype yet (unlike the freight
 sibling's `itonami/freight-dispatch` game). The fastest hands-on way to feel
