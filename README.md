@@ -76,7 +76,7 @@ delivery are never autonomous, at any phase, by construction.** Two
 independent layers enforce this (`pipeline.governor`'s `:batch/dispatch`/
 `:delivery/settle` high-stakes gate and `pipeline.phase`'s phase table,
 which never puts either op in any phase's `:auto` set) -- see
-`pipeline.phase`'s docstring and `test/pipeline/phase_test.clj`'s
+`pipeline.phase`'s docstring and `test/pipeline/phase_test.cljk`'s
 `batch-dispatch-never-auto-at-any-phase`/`delivery-settle-never-auto-at-
 any-phase`. The actor may draft, check and recommend; a human pipeline
 controller is always the one who actually dispatches a batch into the
@@ -176,14 +176,14 @@ robotics/identity/forms/dmn/bpmn/audit-ledger stack.
 
 | File | Role |
 |---|---|
-| `src/pipeline/store.cljc` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + dispatch AND delivery history (dual history). The double-actuation guard checks dedicated `:dispatched?`/`:delivered?` booleans rather than a `:status` value |
-| `src/pipeline/registry.cljc` | Dispatch/delivery draft records, plus the self-contained pipeline-integrity range-check pure function (`line-pressure-out-of-range?`) the governor re-verifies against -- no external capability library to delegate to |
-| `src/pipeline/facts.cljc` | Per-jurisdiction pipeline-integrity / custody / bonding-grounding catalog with an official spec-basis citation per entry, honest coverage reporting |
-| `src/pipeline/pipelineadvisor.cljc` | **PipelineTransport advisor** -- `mock-advisor` ‖ `llm-advisor`; intake/segment-verification/dispatch/delivery proposals |
-| `src/pipeline/governor.cljc` | **Pipeline Integrity Governor** -- 7 HARD checks (spec-basis · evidence-incomplete · line-pressure-out-of-range, the aerospace two-sided-tolerance discipline · pod-chain-integrity-broken, the freight 4920 POD-chain discipline · product-contamination-flag-unresolved · integrity-assessment-stale · bonding-grounding-unconfirmed) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
-| `src/pipeline/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (dispatch/delivery always human; batch intake is the ONLY auto-eligible op, no direct capital risk) |
-| `src/pipeline/operation.cljc` | **OperationActor** -- langgraph StateGraph |
-| `src/pipeline/sim.cljc` | demo driver |
+| `src/pipeline/store.cljk` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + dispatch AND delivery history (dual history). The double-actuation guard checks dedicated `:dispatched?`/`:delivered?` booleans rather than a `:status` value |
+| `src/pipeline/registry.cljk` | Dispatch/delivery draft records, plus the self-contained pipeline-integrity range-check pure function (`line-pressure-out-of-range?`) the governor re-verifies against -- no external capability library to delegate to |
+| `src/pipeline/facts.cljk` | Per-jurisdiction pipeline-integrity / custody / bonding-grounding catalog with an official spec-basis citation per entry, honest coverage reporting |
+| `src/pipeline/pipelineadvisor.cljk` | **PipelineTransport advisor** -- `mock-advisor` ‖ `llm-advisor`; intake/segment-verification/dispatch/delivery proposals |
+| `src/pipeline/governor.cljk` | **Pipeline Integrity Governor** -- 7 HARD checks (spec-basis · evidence-incomplete · line-pressure-out-of-range, the aerospace two-sided-tolerance discipline · pod-chain-integrity-broken, the freight 4920 POD-chain discipline · product-contamination-flag-unresolved · integrity-assessment-stale · bonding-grounding-unconfirmed) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
+| `src/pipeline/phase.cljk` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (dispatch/delivery always human; batch intake is the ONLY auto-eligible op, no direct capital risk) |
+| `src/pipeline/operation.cljk` | **OperationActor** -- langgraph StateGraph |
+| `src/pipeline/sim.cljk` | demo driver |
 | `test/pipeline/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
 
 ## Business-process coverage (honest)

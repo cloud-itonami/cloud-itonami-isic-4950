@@ -126,7 +126,7 @@ status-lifecycle bug (ADR-2607071320).
 
 `pipeline.store/Store` is implemented by both `MemStore` (atom-backed, default
 for dev/tests/demo) and `DatomicStore` (`langchain.db`-backed), proven to
-satisfy the same contract in `test/pipeline/store_contract_test.clj`. The
+satisfy the same contract in `test/pipeline/store_contract_test.cljk`. The
 ledger stays append-only on every backend: which batch was screened for a line
 pressure outside its window, a broken POD chain, an unresolved contamination
 flag, a stale integrity assessment, or unconfirmed bonding/grounding, which
@@ -186,7 +186,7 @@ hiccup can never auto-dispatch a batch or auto-deliver.
   genuinely-new-concept check, all discipline-reuse documented as such per
   `cloud-itonami-isic-0162` Decision 3.
 - `MemStore` || `DatomicStore` parity is proven by
-  `test/pipeline/store_contract_test.clj`.
+  `test/pipeline/store_contract_test.cljk`.
 - 37 tests / 193 assertions pass; lint is clean; the demo
   (`clojure -M:dev:run`) walks one clean dispatch + delivery lifecycle, plus
   eight HARD-hold scenarios (no spec-basis, line pressure, POD chain,
