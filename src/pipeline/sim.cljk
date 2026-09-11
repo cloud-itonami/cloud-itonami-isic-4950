@@ -1,5 +1,5 @@
 (ns pipeline.sim
-  "Demo driver -- `clojure -M:dev:run`. Walks a clean batch through
+  "Demo driver -- `kbb -M:dev:run`. Walks a clean batch through
   intake -> segment-integrity assessment -> batch dispatch (escalate/
   approve/commit) -> delivery settlement (escalate/approve/commit),
   then shows HARD-hold scenarios: a jurisdiction with no spec-basis,

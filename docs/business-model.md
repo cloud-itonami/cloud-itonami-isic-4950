@@ -246,7 +246,7 @@ bigger.
 ## Maturity
 
 `:implemented` -- PipelineTransport advisor + Pipeline Integrity Governor run
-as real, tested code (`clojure -M:dev:test`: 37 tests / 193 assertions, 0
+as real, tested code (`kbb -M:dev:test`: 37 tests / 193 assertions, 0
 failures; lint clean), promoted from the originally-published `:blueprint`-
 tier scaffold, following the SAME governed-actor architecture as the other
 prior actors across this fleet, with its own distinct, independently-named
