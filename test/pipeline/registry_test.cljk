@@ -1,5 +1,5 @@
 (ns pipeline.registry-test
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [pipeline.registry :as r]))
 
 ;; ----------------------------- range-check pure functions -----------------------------
