@@ -1,0 +1,31 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:dev:physics` runs it.
+;;
+;; README "Robotics premise": an autonomous pipeline-pig or valve robot
+;; performs the physical batch dispatch and segment verification of a
+;; pipeline (ISIC 4950) -- opening a line segment to flow and closing it.
+;; Here: the pressure a crude-oil batch needs to move through one 50 km
+;; segment at the dispatch rate the valve robot opens it to, and the
+;; tensile check of a line-pipe coupon cut during segment verification.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isic-4950"
+ :cases
+ [{:id :crude-batch-segment-pressure
+   :kind :pipe-flow
+   :procedure "a crude-oil batch is dispatched through a 50 km, 500 mm segment rising 50 m between pump stations; the dispatch flow rate is swept"
+   :params {:diameter-m 0.50 :length-m 50000.0 :roughness-m 4.5e-5
+            :density-kg-m3 850.0 :viscosity-pa-s 0.010 :pump-efficiency 0.80 :elevation-m 50.0}
+   :sweep {:param :q-m3s :values [0.10 0.20 0.30 0.40 0.50]}
+   :quantity :pressure-drop-pa
+   :limit {:max 5.0e6 :basis "estimate: pressure the upstream pump station may put on this segment (stand-in for the segment's MAOP, which comes from its own pipe grade and wall thickness); crude density/viscosity are estimates too"}
+   :boundary {:lo 0.05 :hi 1.0}}
+  {:id :line-pipe-coupon-tensile
+   :kind :material
+   :procedure "a coupon cut from the line pipe during segment verification is pulled in tension; the yield strength of the pipe heat is swept"
+   :params {:area-m2 1.0e-4 :max-force-n 60000.0}
+   :sweep {:param :yield-stress-pa :values [330.0e6 345.0e6 360.0e6 380.0e6 400.0e6]}
+   :quantity :yield-force-n
+   :limit {:min 36000.0 :basis "API 5L PSL2 grade L360 / X52 minimum yield strength 360 MPa, times the 1.0e-4 m2 coupon section"}}]}
