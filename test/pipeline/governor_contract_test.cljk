@@ -7,7 +7,7 @@
     `:batch/dispatch`/`:delivery/settle` NEVER auto-commit at any phase,
     `:batch/intake` (no direct capital risk) MAY auto-commit when clean,
     and every decision (commit OR hold) leaves exactly one ledger fact."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [langgraph.graph :as g]
             [pipeline.store :as store]
             [pipeline.operation :as op]))
