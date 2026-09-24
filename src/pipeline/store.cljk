@@ -35,7 +35,7 @@
   trail a regulator, a custody counterparty, or an operator trusting a
   pipeline-transport actor needs, and the evidence an operator needs if
   a dispatch or a delivery is later disputed."
-  (:require #?(:clj  [clojure.edn :as edn]
+  (:require #?(:clj  [kotoba.lang.edn :as edn]
                :cljs [cljs.reader :as edn])
             [pipeline.registry :as registry]
             [langchain.db :as d]))
